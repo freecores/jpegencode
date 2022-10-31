@@ -1,0 +1,49 @@
+CAPI=2:
+
+name : ::jpegencode:0
+
+filesets:
+  rtl:
+    files:
+      - y_huff.v
+      - cbd_q_h.v
+      - cb_huff.v
+      - cb_quantizer.v
+      - cb_dct.v
+      - crd_q_h.v
+      - cr_dct.v
+      - cr_quantizer.v
+      - cr_huff.v
+      - ff_checker.v
+      - fifo_out.v
+      - pre_fifo.v
+      - rgb2ycbcr.v
+      - sync_fifo_32.v
+      - sync_fifo_ff.v
+      - yd_q_h.v
+      - y_dct.v
+      - y_quantizer.v
+      - jpeg_top.v
+    file_type : verilogSource
+
+
+  sky130:
+    files: [data/sky130.tcl : {file_type : tclSource}]
+
+targets:
+  default:
+    filesets: [rtl]
+
+  lint:
+    default_tool : verilator
+    filesets : [rtl]
+    tools:
+      verilator:
+        mode: lint-only
+    toplevel: jpeg_top
+
+  sky130_y_huff:
+    default_tool : openlane
+    filesets: [rtl, sky130]
+    toplevel : y_huff
+    
