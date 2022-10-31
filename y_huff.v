@@ -57,7 +57,7 @@ input  [10:0]  Y71, Y72, Y73, Y74, Y75, Y76, Y77, Y78, Y81, Y82, Y83, Y84;
 input  [10:0]  Y85, Y86, Y87, Y88;
 output	[31:0]	JPEG_bitstream;
 output	data_ready;
-output	output_reg_count;
+output	[4:0] output_reg_count;
 output	end_of_block_output;
 output		end_of_block_empty;
 
